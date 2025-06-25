@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+      - ./init-users.js:/docker-entrypoint-initdb.d/init-users.js:ro
+  api:
+    build: ./api
+    container_name: api-server
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/tptiers
+
+volumes:
+  mongo-data:
