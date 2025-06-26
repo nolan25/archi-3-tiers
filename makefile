@@ -1,4 +1,4 @@
-# Makefile pour archi-3-tiers
+# Makefile pour archi-3-tiers#
 
 # Commande Docker Compose (ajustez si besoin : docker compose vs docker-compose)
 DC = docker compose
